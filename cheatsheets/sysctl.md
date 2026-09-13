@@ -137,9 +137,30 @@ net.ipv4.tcp_tw_reuse = 1
 ````
 
 ### Disable ipv6
+Create a file `/etc/systemd/system/disable-ipv6.service`
+
+````
+[Unit]
+Description=Disable IPv6
+After=network.target
+After=netplan-apply.service
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/sysctl -p
+
+[Install]
+WantedBy=multi-user.target
+
+````
+
+Add this to /etc/sysctl.conf
+
 ````
 net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1
 ````
+
+    systemctl daemon-reload
 

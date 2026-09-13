@@ -98,6 +98,9 @@ noremap <F2> :set paste!<CR>
 vmap y y:call system('wl-copy', @")<CR>
 vmap d d:call system('wl-copy', @")<CR>
 
+" Diabled, because of mis typing on my 60% keyboard.
+nmap K <Nop>
+
 "------------------------------------------------------------------------------
 " Some mappings if plugin is available
 "------------------------------------------------------------------------------

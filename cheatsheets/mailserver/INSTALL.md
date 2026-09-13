@@ -8,6 +8,10 @@ Below the mailserver configuration on:
 - Postfix version 3.8.6
 - Dovecot version 2.4.0.2
 
+    apt install postfix
+    apt install postfix-lmdb
+    apt install postfix-pcre
+
 ## Dovecot
 
 Install [Dovecot](https://repo.dovecot.org/) with version 2.4
@@ -98,7 +102,7 @@ Create [/etc/postfix/client_checks](./client_checks) and [/etc/postfix/sender_ch
 
 ### Postfix/SPF
 
-    sudo apt install postfix-policyd-spf-python
+    apt install postfix-policyd-spf-python
 
 Change the line in `/etc/postfix-policyd-spf-python/policyd-spf.conf` to:
 
@@ -227,10 +231,7 @@ Reload the units with:
 ## Spamassassin
 
     apt install spamass-milter
-
-Create a crontab for example
-
-    20 4 10 * * /usr/bin/sa-update
+    systemctl enable --now spamassassin-maintenance.timer
 
 Append this line in `/etc/postfix/main.conf` to smtpd_milters (comma separated)
 

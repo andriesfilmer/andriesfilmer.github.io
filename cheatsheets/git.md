@@ -19,29 +19,37 @@ Clone or copy a repository (which already exists).
     git pull orgin master
 
 ## Branches
+
     git branch           # Show branches
     git branch issue53   # Create branch 'issue53'
     git checkout issue53 # Work with branch 'issue53'
 
 Fix issue53 and commit the fix.
+
     git commit -am 'Fixed issue53'
     git push -u origin issue53 # Push to remote
 
 Back to master branch
+
     git checkout master  # Switched to branch 'master'
 
 Diff between branches
+
     git diff HEAD..origin/master [path]
 
 Merge a branch
+
     git checkout master
     git merge issue53
+    git checkout master && git merge --no-ff messageboard -m "Merge branch 'messageboard' into master"
 
 Remove branch
+
     git branch --delete issue53        # Remove local branch
     git push origin --delete issue49   # Delete old (stale) branch on remote.
 
 Get rid of remote branches that no longer exist on the remote
+
     git fetch --prune
 
 ## Stash
@@ -70,6 +78,7 @@ Or, if you want to remove the stash after applying:
 ## Tips
 
 See recent changes of a specific file.
+
     git blame /path/to/file
     git reflog /path/to/file
     git log /path/to/file

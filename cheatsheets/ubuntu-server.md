@@ -262,7 +262,7 @@ Run sysctl after netplan via a systemd service
 
 Create `/etc/systemd/system/disable-ipv6.service`:
 ````
-ini[Unit]
+[Unit]
 Description=Disable IPv6
 After=network.target
 After=netplan-apply.service

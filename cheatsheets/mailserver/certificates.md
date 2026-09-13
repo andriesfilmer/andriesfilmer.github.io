@@ -33,6 +33,12 @@ Register account
       --key-file /etc/letsencrypt/live/server05.igroupware.org/privkey.pem \
       --cert-file /etc/letsencrypt/live/server05.igroupware.org/cert.pem
 
+For SNI maps, Postfix doesn't read the key and certificate paths at lookup time. It expects the table to contain the actual PEM contents, base64-encoded.
+
+    postmap -F lmdb:/etc/postfix/vmail_ssl.map
+    postfix reload
+
+
 Also put a [crontab](https://crontab.guru/) to renew the certificattes each month. For example:
 
     # Check if acme.sh has installed a crontab.
